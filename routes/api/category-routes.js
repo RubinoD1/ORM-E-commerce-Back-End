@@ -67,8 +67,27 @@ router.post('/', (req, res) => {
       });
 });
 
+// update a category by its `id` value
 router.put('/:id', (req, res) => {
-  // update a category by its `id` value
+ /* The .update() method combines the parameters for creating data and looking up data. 
+ We pass in req.body to provide the new data we want to use in the update and req.params.id to indicate 
+ where exactly we want that new data to be used. */
+ Category.update(req.body, {
+      where: {
+          id: req.params.id
+      }
+  })
+      .then(dbCategoryData => {
+          if (!dbCategoryData[0]) {
+              res.status(404).json({ message: 'No Category found with this id' });
+              return;
+          }
+          res.json(dbCategoryData);
+      })
+      .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+      });
 });
 
 router.delete('/:id', (req, res) => {
