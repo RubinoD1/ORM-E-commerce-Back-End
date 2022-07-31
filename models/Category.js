@@ -6,7 +6,22 @@ class Category extends Model {}
 
 Category.init(
   {
-    // define columns
+      // define an id column
+      id: {
+        //setting the data type to an integer
+          type: DataTypes.INTEGER,
+          //this is the equivalent of SQL's `NOT NULL` option. 
+          allowNull: false,
+          //setting that this is a Primary Key 
+          primaryKey: true,
+          // turn on auto increment
+          autoIncrement: true
+      },
+      // define category_name column
+      category_name: {
+          type: DataTypes.STRING,
+          allowNull: false
+      }
   },
   {
     // pass in our imported sequelize connection (the direct connection to our database)
