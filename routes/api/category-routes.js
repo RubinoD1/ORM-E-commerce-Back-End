@@ -38,7 +38,7 @@ router.get('/:id', (req, res) => {
       ]
   })
       .then(dbCategoryData => {
-        /*Since we are searching by id, it is possible a search could be done for a nonexistent id value. 
+        /* Since we are searching by id, it is possible a search could be done for a nonexistent id value. 
           if the .then() method returns nothing from the query, a 404 status is sent to the client to indicate that it worked
           but no data was found for that requested id.  */ 
           if (!dbCategoryData) {
@@ -53,8 +53,18 @@ router.get('/:id', (req, res) => {
       });
 });
 
+// create a new category
 router.post('/', (req, res) => {
-  // create a new category
+  // To insert data SQL's .create() method is used. 
+  // A key/value pair is used where the key is what defined the Category model and values are what we get from req.body.
+  Category.create({
+      category_name: req.body.category_name
+  })
+      .then(dbCategoryData => res.json(dbCategoryData))
+      .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+      });
 });
 
 router.put('/:id', (req, res) => {
