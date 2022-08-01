@@ -1,9 +1,25 @@
 # ORM-E-commerce-Back-End 
 
-GitHub Repository: 
-Video Link: 
+GitHub Repository: https://github.com/RubinoD1/ORM-E-commerce-Back-End
+ 
 
 ## Introduction 
+
+This app is an e-commerce back end for a internet retail comapany. 
+
+## Instructions 
+
+Video Link:
+
+1) A .env file needs to be added to the root of the app with the following file structure:
+
+DB_NAME='ecommerce_db'
+
+DB_USER='root'
+
+DB_PW='ENTER YOUR PASSWORD'
+
+2) To run the app use npm start 
 
 ## Psuedocode 
 
